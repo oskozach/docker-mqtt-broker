@@ -1,0 +1,4 @@
+extras
+*.log
+*.db
+.env
