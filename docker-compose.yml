@@ -10,6 +10,7 @@ services:
       - MOSQUITTO_USERNAME=${MOSQUITTO_USERNAME}
       - MOSQUITTO_PASSWORD=${MOSQUITTO_PASSWORD}
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - ./log:/mosquitto/log
       - data:/mosquitto/data
 volumes:
