@@ -2,15 +2,16 @@ services:
   mosquitto:
     build:
       context: .
-      dockerfile: Dockerfile
+    image: mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    network_mode: "host"
     environment:
       - MOSQUITTO_USERNAME=${MOSQUITTO_USERNAME}
       - MOSQUITTO_PASSWORD=${MOSQUITTO_PASSWORD}
-    image: mqtt-broker:latest
-    container_name: mqttbroker
-    restart: always
     volumes:
-      - ./data:/mosquitto/data
       - ./log:/mosquitto/log
-    ports:
-      - 1883:1883
+      - data:/mosquitto/data
+volumes:
+  data:
+    name: "mosquitto_data"
