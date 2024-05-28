@@ -2,7 +2,7 @@ services:
   mosquitto:
     build:
       context: .
-    image: mosquitto:latest
+    image: dom-mosquitto:0.1
     container_name: mosquitto
     restart: unless-stopped
     ports:
