@@ -5,7 +5,8 @@ services:
     image: mosquitto:latest
     container_name: mosquitto
     restart: unless-stopped
-    network_mode: "host"
+    ports:
+      - ${PORT:-1883}:1883
     environment:
       - MOSQUITTO_USERNAME=${MOSQUITTO_USERNAME}
       - MOSQUITTO_PASSWORD=${MOSQUITTO_PASSWORD}
@@ -13,6 +14,9 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./log:/mosquitto/log
       - data:/mosquitto/data
+networks:
+  default:
+    name: "mosquitto_net"
 volumes:
   data:
     name: "mosquitto_data"
