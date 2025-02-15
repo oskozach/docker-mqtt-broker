@@ -1,4 +1,5 @@
-FROM eclipse-mosquitto:2.0
+ARG IMG_VERSION=latest
+FROM eclipse-mosquitto:${IMG_VERSION}
 
 COPY config/mosquitto.conf /mosquitto/config/mosquitto.conf
 COPY docker-entrypoint.sh /

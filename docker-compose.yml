@@ -2,7 +2,9 @@ services:
   mosquitto:
     build:
       context: .
-    image: my-mosquitto
+      args:
+        IMG_VERSION: ${IMG_VERSION}
+    image: my-mosquitto:${IMG_VERSION}
     container_name: mosquitto
     restart: unless-stopped
     ports:
@@ -12,7 +14,7 @@ services:
       - MOSQUITTO_PASSWORD=${MOSQUITTO_PASSWORD}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./log:/mosquitto/log
+      - ./logs:/mosquitto/log
       - data:/mosquitto/data
 networks:
   default:
