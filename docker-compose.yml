@@ -2,7 +2,7 @@ services:
   mosquitto:
     build:
       context: .
-    image: dom-mosquitto:0.1
+    image: my-mosquitto
     container_name: mosquitto
     restart: unless-stopped
     ports:
@@ -16,7 +16,7 @@ services:
       - data:/mosquitto/data
 networks:
   default:
-    name: "mosquitto_net"
+    name: "mqtt_net"
 volumes:
   data:
     name: "mosquitto_data"
